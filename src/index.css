@@ -32,3 +32,46 @@ nav {
 .card-content {
 	flex-grow: 1;
 }
+
+.cart {
+	position:fixed;
+	bottom: 2rem;
+	right: 2rem;
+	cursor: pointer;
+	z-index: 5;
+	border: 1p solid darkgrey;
+	border-radius: 8px;
+	padding: 16px;
+}
+
+@media (min-width: 768px) {
+	.cart {
+		top: 5rem;
+		bottom: unset;
+	}
+	.basket-list {
+		min-width: 95%;
+	}
+}
+
+.basket-list {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	/* width: 30rem; */
+	min-width: 75%;
+	box-shadow: 0 0 15px 2px #000;
+}
+.basket-close {
+	cursor: pointer;
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	color: #fff;
+}
+.basket-delete{
+	cursor: pointer;
+
+}
