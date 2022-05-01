@@ -12,7 +12,7 @@ function Header() {
                 </a>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     <li>
-                        <a href="https://github.com/truepatch/react-omdb-movies">
+                        <a href="https://github.com/truepatch/react-fortnite-shop">
                             Repo
                         </a>
                     </li>

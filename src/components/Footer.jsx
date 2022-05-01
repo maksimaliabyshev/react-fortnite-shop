@@ -6,7 +6,7 @@ function Footer() {
                     © {new Date().getFullYear()} Copyright Text
                     <a
                         className="grey-text text-lighten-4 right"
-                        href="https://github.com/truepatch/react-omdb-movies"
+                        href="https://github.com/truepatch/react-fortnite-shop"
                     >
                         Repo
                     </a>
