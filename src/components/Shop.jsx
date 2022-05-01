@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { API_KEY, API_URL } from '../config';
+import Alert from './Alert';
 import BasketList from './BasketList';
 import Cart from './Cart';
 import GoodsList from './GoodsList';
@@ -10,6 +11,7 @@ const Shop = () => {
     const [loading, setLoading] = useState(true);
     const [order, setOrder] = useState([]);
     const [isBasketShow, setIsBasketShow] = useState(false);
+    const [alertName, setAlertName] = useState('');
 
     const addToCart = (item) => {
         const itemIndex = order.findIndex(
@@ -32,7 +34,8 @@ const Shop = () => {
                 return orderItem;
             });
             setOrder(newOrder);
-        }
+		}
+		setAlertName(item.name);
     };
     const removeFromCart = (itemId) => {
         const newOrder = order.filter((item) => item.id !== itemId);
@@ -41,6 +44,36 @@ const Shop = () => {
 
     const handleCartShow = () => {
         setIsBasketShow(!isBasketShow);
+    };
+
+    const incQuantity = (itemId) => {
+        const newOrder = order.map((item) => {
+            if (item.id === itemId) {
+                return {
+                    ...item,
+                    quantity: item.quantity + 1,
+                };
+            }
+            return item;
+        });
+        setOrder(newOrder);
+    };
+
+    const decQuantity = (itemId) => {
+        const newOrder = order.map((item) => {
+            if (item.id === itemId && item.quantity >= 0) {
+                return {
+                    ...item,
+                    quantity: item.quantity - 1,
+                };
+            }
+            return item;
+        });
+        setOrder(newOrder);
+    };
+
+    const closeAlert = () => {
+        setAlertName('');
     };
     useEffect(function getGoods() {
         fetch(API_URL, {
@@ -72,8 +105,11 @@ const Shop = () => {
                     order={order}
                     handleCartShow={handleCartShow}
                     removeFromCart={removeFromCart}
+                    incQuantity={incQuantity}
+                    decQuantity={decQuantity}
                 />
             )}
+            {alertName && <Alert name={alertName} closeAlert={closeAlert} />}
         </main>
     );
 };

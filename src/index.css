@@ -63,6 +63,7 @@ nav {
 	/* width: 30rem; */
 	min-width: 75%;
 	box-shadow: 0 0 15px 2px #000;
+	animation: show 300ms ease-in-out;
 }
 .basket-close {
 	cursor: pointer;
@@ -74,4 +75,25 @@ nav {
 .basket-delete{
 	cursor: pointer;
 
+}
+
+.basket-quantity{
+	cursor: pointer;
+	vertical-align: middle;
+	color: #26a69a;
+}
+
+@keyframes show {
+	from{
+		top: 70%;
+		opacity: 0;
+	}
+	to{
+		top: 50%;
+		opacity: 1;
+	}
+}
+
+#toast-container {
+	top: 3rem !important;
 }
