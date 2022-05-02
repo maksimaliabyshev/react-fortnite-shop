@@ -34,7 +34,7 @@ nav {
 }
 
 .cart {
-	position:fixed;
+	position: fixed;
 	bottom: 2rem;
 	right: 2rem;
 	cursor: pointer;
@@ -49,12 +49,12 @@ nav {
 		top: 5rem;
 		bottom: unset;
 	}
-	.basket-list {
+	.cart-list {
 		min-width: 95%;
 	}
 }
 
-.basket-list {
+.cart-list {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -65,30 +65,29 @@ nav {
 	box-shadow: 0 0 15px 2px #000;
 	animation: show 300ms ease-in-out;
 }
-.basket-close {
+.cart-close {
 	cursor: pointer;
 	position: absolute;
 	top: 0.5rem;
 	right: 0.5rem;
 	color: #fff;
 }
-.basket-delete{
+.cart-delete {
 	cursor: pointer;
-
 }
 
-.basket-quantity{
+.cart-quantity {
 	cursor: pointer;
 	vertical-align: middle;
 	color: #26a69a;
 }
 
 @keyframes show {
-	from{
+	from {
 		top: 70%;
 		opacity: 0;
 	}
-	to{
+	to {
 		top: 50%;
 		opacity: 1;
 	}

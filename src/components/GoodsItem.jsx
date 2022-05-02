@@ -1,4 +1,5 @@
-import React from 'react';
+import { useContext } from 'react';
+import { ShopContext } from '../context';
 
 const GoodsItem = (props) => {
     const {
@@ -6,9 +7,10 @@ const GoodsItem = (props) => {
         displayName: name,
         displayDescription: description,
         price,
-		displayAssets: assets,
-		addToCart = Function.prototype
+        displayAssets: assets,
     } = props;
+
+    const { addToCart } = useContext(ShopContext);
     return (
         <div className="card">
             <div className="card-image">
@@ -20,10 +22,17 @@ const GoodsItem = (props) => {
                 <p>{description}</p>
             </div>
             <div className="card-action">
-				<button className="btn" onClick={() => addToCart({ id, name, price: price['finalPrice'] })}>
+                <button
+                    className="btn"
+                    onClick={() =>
+                        addToCart({ id, name, price: price['finalPrice'] })
+                    }
+                >
                     Купить
                 </button>
-                <span className="right" style={{fontSize: '1.8rem'}}>{price.finalPrice} руб.</span>
+                <span className="right" style={{ fontSize: '1.8rem' }}>
+                    {price.finalPrice} руб.
+                </span>
             </div>
         </div>
     );

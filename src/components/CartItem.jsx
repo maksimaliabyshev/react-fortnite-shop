@@ -1,20 +1,17 @@
-import React from 'react';
+import { useContext } from 'react';
+import { ShopContext } from '../context';
 
-const BasketItem = (props) => {
-    const {
-        id,
-        name,
-        price,
-        quantity,
-        removeFromCart = Function.prototype,
-        incQuantity = Function.prototype,
-        decQuantity = Function.prototype,
-    } = props;
+const CartItem = (props) => {
+    const { id, name, price, quantity } = props;
+
+    const { removeFromCart, incQuantity, decQuantity } =
+        useContext(ShopContext);
+
     return (
         <li className="collection-item">
             {name}{' '}
             <i
-                className="material-icons basket-quantity"
+                className="material-icons cart-quantity"
                 onClick={() => {
                     decQuantity(id);
                 }}
@@ -23,7 +20,7 @@ const BasketItem = (props) => {
             </i>{' '}
             x{quantity}{' '}
             <i
-                className="material-icons basket-quantity"
+                className="material-icons cart-quantity"
                 onClick={() => {
                     incQuantity(id);
                 }}
@@ -33,7 +30,7 @@ const BasketItem = (props) => {
             = {price * quantity}
             <span className="secondary-content">
                 <i
-                    className="material-icons basket-delete"
+                    className="material-icons cart-delete"
                     onClick={() => removeFromCart(id)}
                 >
                     close
@@ -43,4 +40,4 @@ const BasketItem = (props) => {
     );
 };
 
-export default BasketItem;
+export default CartItem;
